@@ -21,6 +21,10 @@ void Push(struct Stack* stack, int x) {
     */
 }
 
+/*
+ * 만약 stack이 비어있다면 -1을,
+ * 비어있지 않다면 맨 위의 원소를 삭제 후 반환
+ */
 int Pop(struct Stack* stack) {
     if (stack->top == -1) {
         return -1;
@@ -83,12 +87,15 @@ int main() {
         // o: 스택에서 데이터를 빼고, 그 데이터를 출력한다.
         // 만약 스택이 비어있다면, "empty"를 출력한다.
         else if (command == 'o') {
-            if (IsEmpty(&stack)) {
+            int popData = Pop(&stack);
+            if (popData == -1) {
                 printf("empty\n");
             } else {
-                int data = Pop(&stack);
-                printf("%d\n", data); 
+                printf("%d\n", popData); 
             }
+            /* 간지나는 버전 (feat. 삼항연산자)
+            printf("%d\n", isEmpty(&stack) ? "empty\n" : Pop(&stack));
+            */
         } 
         // c: 스택에 쌓여있는 데이터의 수를 출력
         else if (command == 'c') {
