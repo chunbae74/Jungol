@@ -75,7 +75,7 @@ void list_remove(Node *previous_ptr)
 {
     Node *remove_ptr;
     remove_ptr = previous_ptr->next;
-    remove_ptr = remove_ptr->next;
+    previous_ptr->next = remove_ptr->next;
     free(remove_ptr);
 }
 
